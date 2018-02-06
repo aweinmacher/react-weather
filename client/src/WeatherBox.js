@@ -6,15 +6,10 @@ class WeatherBox extends React.Component {
   constructor(props) {
     super(props);
     this.onSubmitCommentForm = this.onSubmitCommentForm.bind(this);
-    this.state = {comments: []};
   }
-  onSubmitCommentForm(data) { 
-    this.setState(prevState => ({
-      comments: prevState
-        .comments
-        .concat(data)
-    }));
-  };
+  onSubmitCommentForm (data) {
+    this.props.onSubmitCommentForm(data, this.props.boxIndex);
+  }
   render() {
     return (
        <div>
@@ -28,7 +23,7 @@ class WeatherBox extends React.Component {
           </div>
         </div>
         <CommentForm onSubmitCommentForm={this.onSubmitCommentForm}/>
-        <CommentsListBox comments={this.state.comments}/>
+        <CommentsListBox comments={this.props.item.comments}/>
         <hr/>
       </div>
     )

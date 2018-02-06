@@ -7,27 +7,38 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.onSubmitSearchForm = this.onSubmitSearchForm.bind(this);
-    this.state = {boxes: []};
+    this.onSubmitCommentForm = this.onSubmitCommentForm.bind(this);
+    this.state = { boxes: [] };
   }
-  
-  onSubmitSearchForm(data) { 
+  onSubmitSearchForm(data) {
     this.setState(prevState => ({
-      boxes: prevState
-        .boxes
-        .concat(data)
+      boxes: prevState.boxes.concat(data)
     }));
   };
-  render() {
-    return (
-      <div>
-        <div className="page-header">
-          <h2>Weather app</h2>
-          <SearchForm onSubmitSearchForm={this.onSubmitSearchForm}/>
-        </div>
-        <WeatherListBox boxes={this.state.boxes}/>
+  onSubmitCommentForm(data, boxIndex) {
+    this.setState(prevState => {
+      return  {  boxes: prevState.boxes.map((box, i) => {
+        if (i === boxIndex) {
+          var newBox = {...box};
+          newBox.comments = box.comments.concat(data);
+          return newBox;
+        }
+        return box;
+      })
+    }
+    })
+  };
+render() {
+  return (
+    <div className="container">
+      <div className="page-header">
+        <h2>Weather app</h2>
+        <SearchForm onSubmitSearchForm={this.onSubmitSearchForm} />
       </div>
-    );
-  }
+      <WeatherListBox boxes={this.state.boxes} onSubmitCommentForm={this.onSubmitCommentForm} />
+    </div>
+  );
+}
 }
 
 

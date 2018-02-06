@@ -9,8 +9,7 @@ class SearchForm extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();//<== will prevent the original code from taking place (Submit/CLick etc)
-        // dummy data
-        let structure = {};
+        let structure = {}; // dummy data
         if (this.state.city === "a") {
             structure = {
                 name: "Hod Hasharon",
