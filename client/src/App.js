@@ -15,7 +15,7 @@ class App extends Component {
       boxes: prevState.boxes.concat(data)
     }));
   };
-  onSubmitCommentForm(data, boxIndex) {
+  onSubmitCommentForm(data, boxIndex) {// go to db . then (()=> )
     this.setState(prevState => {
       return  {  boxes: prevState.boxes.map((box, i) => {
         if (i === boxIndex) {

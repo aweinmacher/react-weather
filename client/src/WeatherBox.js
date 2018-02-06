@@ -12,7 +12,7 @@ class WeatherBox extends React.Component {
   }
   render() {
     return (
-       <div>
+       <div className="col-md-4 col-sm-6">
         <div>
           <span className="glyphicon glyphicon-trash pull-right"></span>
           <div className="media-left">
