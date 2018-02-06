@@ -6,7 +6,8 @@ const WeatherListBox = (props) => {
                                                       key={index} 
                                                       item={item} 
                                                       boxIndex={index} 
-                                                      onSubmitCommentForm={props.onSubmitCommentForm}/>)
+                                                      onSubmitCommentForm={props.onSubmitCommentForm} 
+                                                      removeBox={props.removeBox}/>)
     return (
       <div>
         {boxes}
