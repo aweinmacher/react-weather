@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import axios from 'axios';
 import './App.css';
 import SearchForm from './SearchForm'
 import WeatherListBox from './WeatherListBox'
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.onSubmitSearchForm = this.onSubmitSearchForm.bind(this);
@@ -28,6 +29,18 @@ class App extends Component {
     }
     })
   };
+
+componentDidMount() {
+  var url = `http://localhost:3000/data`
+    axios.get(url)
+        .then(response => {
+            console.log(response.data);
+            this.setState({boxes: response.data});
+        })
+        .catch(error => {
+            console.log('Error fetching and parsing data', error);
+        });
+}
 render() {
   return (
     <div className="container">

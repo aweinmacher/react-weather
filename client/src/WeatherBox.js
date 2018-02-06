@@ -18,7 +18,7 @@ class WeatherBox extends React.Component {
           <div className="media-left">
             <img src={this.props.item.icon} alt={this.props.item.name} className="media-object" style={{ width: 60}}/></div>
           <div className="media-body">
-            <h4 className="media-heading">{this.props.item.name}</h4>
+            <h4 className="media-heading">{this.props.item.name}, {this.props.item.country}</h4>
             <p>{this.props.item.text} {this.props.item.feelslike_c} &#8451;</p>
           </div>
         </div>

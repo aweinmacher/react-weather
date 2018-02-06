@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+// import axios from 'axios'
 
 class SearchForm extends Component {
     constructor(props) {
@@ -13,6 +13,7 @@ class SearchForm extends Component {
         if (this.state.city === "a") {
             structure = {
                 name: "Hod Hasharon",
+                country: "Israel",
                 icon: "http://cdn.apixu.com/weather/64x64/day/116.png",
                 feelslike_c: "20",
                 text: "Partly cloudy",
@@ -21,6 +22,7 @@ class SearchForm extends Component {
         } else if (this.state.city === "b") {
             structure = {
                 name: "New York",
+                country: "USA",
                 icon: "http://cdn.apixu.com/weather/64x64/day/308.png",
                 feelslike_c: "-1",
                 text: "Heavy rain",
@@ -29,6 +31,7 @@ class SearchForm extends Component {
         } else {
             structure = {
                 name: "Paris",
+                country: "France",
                 icon: "http://cdn.apixu.com/weather/64x64/day/113.png",
                 feelslike_c: "5",
                 text: "Sunny",
@@ -36,7 +39,7 @@ class SearchForm extends Component {
             };
         }
         this.props.onSubmitSearchForm(structure);
-        this.setState({ city: '' });
+        this.setState({ city: '' }); // end of dummy data
         
         // var url = `http://api.apixu.com/v1/current.json?key=250d2778fb1f4ec2914142850180502&q=${this.state.city}`
         // axios.get(url)
@@ -44,6 +47,7 @@ class SearchForm extends Component {
         //         console.log(response);
         //         var structure = {
         //             name: response.data.location.name,
+        //             country: response.data.location.country, // not sure
         //             icon: response.data.current.condition.icon,
         //             feelslike_c: response.data.current.feelslike_c,
         //             text: response.data.current.condition.text,
