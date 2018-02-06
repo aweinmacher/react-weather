@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props);
     this.onSubmitSearchForm = this.onSubmitSearchForm.bind(this);
     this.onSubmitCommentForm = this.onSubmitCommentForm.bind(this);
+    this.removeBox = this.removeBox.bind(this);
     this.state = { boxes: [] };
   }
   onSubmitSearchForm(data) {
@@ -18,40 +19,50 @@ class App extends React.Component {
   };
   onSubmitCommentForm(data, boxIndex) {// go to db . then (()=> )
     this.setState(prevState => {
-      return  {  boxes: prevState.boxes.map((box, i) => {
-        if (i === boxIndex) {
-          var newBox = {...box};
-          newBox.comments = box.comments.concat(data);
-          return newBox;
-        }
-        return box;
-      })
-    }
+      return {
+        boxes: prevState.boxes.map((box, i) => {
+          if (i === boxIndex) {
+            var newBox = { ...box };
+            newBox.comments = box.comments.concat(data);
+            return newBox;
+          }
+          return box;
+        })
+      }
     })
   };
-
-componentDidMount() {
-  var url = `http://localhost:3000/data`
+  removeBox(boxIndex) {
+    this.setState(
+      (prevState) => {
+        return {boxes: prevState.boxes.filter((item, i) => { return (i !== boxIndex) })}
+      }
+    );
+  }
+  componentDidMount() {
+    var url = `http://localhost:3000/data`
     axios.get(url)
-        .then(response => {
-            console.log(response.data);
-            this.setState({boxes: response.data});
-        })
-        .catch(error => {
-            console.log('Error fetching and parsing data', error);
-        });
-}
-render() {
-  return (
-    <div className="container">
-      <div className="page-header">
-        <h2>Weather app</h2>
-        <SearchForm onSubmitSearchForm={this.onSubmitSearchForm} />
+      .then(response => {
+        console.log(response.data);
+        this.setState({ boxes: response.data });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      });
+  }
+  render() {
+    return (
+      <div className="container">
+        <div className="page-header">
+          <h2>Weather app</h2>
+          <SearchForm onSubmitSearchForm={this.onSubmitSearchForm} />
+        </div>
+        <WeatherListBox 
+                boxes={this.state.boxes} 
+                onSubmitCommentForm={this.onSubmitCommentForm} 
+                removeBox={this.removeBox}/>
       </div>
-      <WeatherListBox boxes={this.state.boxes} onSubmitCommentForm={this.onSubmitCommentForm} />
-    </div>
-  );
-}
+    );
+  }
 }
 
 
