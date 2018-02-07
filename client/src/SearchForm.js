@@ -1,3 +1,5 @@
+// needed just for validation - if true should save city in App.state, else - alert "Try again"
+
 import React, { Component } from 'react';
 // import axios from 'axios'
 
@@ -47,10 +49,6 @@ class SearchForm extends Component {
         //         console.log(response);
         //         var structure = {
         //             name: response.data.location.name,
-        //             country: response.data.location.country, // not sure
-        //             icon: response.data.current.condition.icon,
-        //             feelslike_c: response.data.current.feelslike_c,
-        //             text: response.data.current.condition.text,
         //             comments: []
         //         };
         //         this.props.onSubmitSearchForm(structure);

@@ -7,10 +7,6 @@ var commentSchema = new Schema({
 });
 var boxSchema = new Schema({
     name: String,
-    country: String,
-    icon: String,
-    feelslike_c: String,
-    text: String,
     comments: [commentSchema]
 });
 

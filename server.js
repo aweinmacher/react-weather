@@ -7,10 +7,6 @@ var Box = require('./models');
 // TO CREATE COLLECTION (weatherDB)
 // var dummyBox = new Box({
 //   name: "Hod Hasharon",
-//   country: "Israel",
-//   icon: "http://cdn.apixu.com/weather/64x64/day/116.png",
-//   feelslike_c: "20",
-//   text: "Partly cloudy",
 //   comments: [
 //     { visitor: 'Anna', text: 'Nice weather!' },
 //     { visitor: 'Olga', text: 'Oh, no!!!' }

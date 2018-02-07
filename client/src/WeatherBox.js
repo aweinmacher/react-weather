@@ -1,3 +1,6 @@
+// should be in charge of ajax
+// in the state everything except comments - commments in App because of one source of truth
+
 import React from 'react';
 import CommentForm from './CommentForm';
 import CommentsListBox from './CommentsListBox';
@@ -7,6 +10,7 @@ class WeatherBox extends React.Component {
     super(props);
     this.removeBox = this.removeBox.bind(this);
     this.onSubmitCommentForm = this.onSubmitCommentForm.bind(this);
+    this.state = {city: {}};
   }
   removeBox() {
     this.props.removeBox(this.props.boxIndex);

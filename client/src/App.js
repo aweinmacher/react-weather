@@ -38,7 +38,7 @@ class App extends React.Component {
       }
     );
   }
-  componentDidMount() {
+  componentDidMount() { // fetch objects with city and comments ONLY
     var url = `http://localhost:3000/data`
     axios.get(url)
       .then(response => {
